@@ -1,0 +1,14 @@
+vcpus = %VCPUS%
+kernel = "%KERNEL%"
+memory = "%VMMEM%"
+name = "%VMNAME%"
+vif = ['ip=%IP%, vifname=%VIFNAME%']
+ip = "%IP%"
+gateway = "88.198.55.199"
+netmask = "255.255.255.224"
+domain = "vnsecurity.net"
+
+disk = ['phy:%ROOTDEV%,%ROOTDEV_VM%,w', 'phy:%SWAPDEV%,%SWAPDEV_VM%,w', 'phy:%SHAREDEV%,%SHAREDEV_VM%,w!', 'phy:%SRVDEV%,%SRVDEV_VM%,w' ]
+root = "%ROOTDEV_VM% ro"
+extra = "TERM=xterm xencons=tty console=tty1"
+

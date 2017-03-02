@@ -1,0 +1,321 @@
+diff -Nru --exclude='*.pyc' Quills.old/MetaWeblogAPI.py Quills/MetaWeblogAPI.py
+--- Quills.old/MetaWeblogAPI.py	2006-12-29 18:28:56.000000000 +0300
++++ Quills/MetaWeblogAPI.py	2007-01-05 03:06:00.000000000 +0300
+@@ -41,7 +41,7 @@
+     'metaWeblog/newPost',
+     'metaWeblog/getRecentPosts',
+     'metaWeblog/getUsersBlogs',
+-    'metaWeblog/getCategories'
++    'metaWeblog/q_getCategories'
+     # We include Blogger API auth methods too as some implementations of
+     # MetaWeblog API expect Blogger API to be present as well (i.e.
+     # Performancing as of version 1.3).
+@@ -190,10 +190,10 @@
+ 
+         return self.entryStruct(obj)
+     
+-    security.declareProtected(CMFCorePermissions.View, 'getCategories')
+-    def getCategories(self, blogid, username, password):
++    security.declareProtected(CMFCorePermissions.View, 'q_getCategories')
++    def q_getCategories(self, blogid, username, password):
+         """Returns a struct containing description, htmlUrl and rssUrl"""
+-        self.plone_log('metaWeblog/getCategories')
++        self.plone_log('metaWeblog/q_getCategories')
+         weblog = self._getByUID(blogid)
+         topics = weblog.getTopics()
+         # 2005-12-13 tomster: 
+@@ -339,7 +339,7 @@
+             'dateCreated': obj.effective(),
+             'title': obj.Title(),
+             'description' : body,
+-            'categories' : [cat.getId() for cat in obj.getCategories()],
++            'categories' : [cat.getId() for cat in obj.q_getCategories()],
+             'link' : obj.absolute_url()
+         }
+ 
+diff -Nru --exclude='*.pyc' Quills.old/Weblog.py Quills/Weblog.py
+--- Quills.old/Weblog.py	2006-12-29 18:28:56.000000000 +0300
++++ Quills/Weblog.py	2007-01-05 03:06:09.000000000 +0300
+@@ -41,7 +41,7 @@
+ import MetaWeblogAPI
+ from interfaces import IWeblog
+ from config import PROJECTNAME, DEFAULT_LEFT_SLOTS, DEFAULT_RIGHT_SLOTS, \
+-     CREATE_TOPIC_IMAGES_FOLDERS
++     CREATE_FOLDERS
+ from topic import Topic
+ import permissions as perms
+ 
+@@ -163,10 +163,10 @@
+     schema = WeblogSchema
+     security = ClassSecurityInfo()
+ 
+-    _properties = (
+-        {'id':'left_slots',  'type':'lines', 'mode':'wd'},
+-        {'id':'right_slots', 'type':'lines', 'mode':'wd'},
+-        )
++#    _properties = (
++#        {'id':'left_slots',  'type':'lines', 'mode':'wd'},
++#        {'id':'right_slots', 'type':'lines', 'mode':'wd'},
++#        )
+ 
+     archetype_name = "Weblog"
+     meta_type = 'Weblog'
+@@ -240,21 +240,31 @@
+                                                archive_type='root')
+ 
+         # Create folder to store topic images
+-        if CREATE_TOPIC_IMAGES_FOLDERS and \
+-           not hasattr(self.aq_inner.aq_explicit, 'topic_images'):
+-            self.portal_types.constructContent('Folder',
+-                                               self,
+-                                               'topic_images',
+-                                               title='Topic Images')
++        # Modifed by rd 
++        if CREATE_FOLDERS:
++            for folder in CREATE_FOLDERS:
++                if not hasattr(self.aq_inner.aq_explicit, folder):
++                    self.portal_types.constructContent('Folder',
++                                               self, folder,
++                                               title=folder)
++
++
++        from Products.CMFPlone.migrations.migration_util import safeEditProperty
++        if DEFAULT_LEFT_SLOTS:
++            safeEditProperty(self, 'left_slots', DEFAULT_LEFT_SLOTS, 'lines')
+ 
++        if DEFAULT_RIGHT_SLOTS:
++            safeEditProperty(self, 'right_slots', DEFAULT_RIGHT_SLOTS, 'lines')
+ 
+ 
+     security.declarePrivate('at_post_create_script')
+     def at_post_create_script(self): 
+         # Setup the default portlets
+-        if not hasattr(self.aq_inner.aq_explicit, 'left_slots'):
++        #if not hasattr(self.aq_inner.aq_explicit, 'left_slots'):
++        if DEFAULT_LEFT_SLOTS:
+             self.left_slots = DEFAULT_LEFT_SLOTS
+-        if not hasattr(self.aq_inner.aq_explicit, 'right_slots'):
++        #if not hasattr(self.aq_inner.aq_explicit, 'right_slots'):
++        if DEFAULT_RIGHT_SLOTS:
+             self.right_slots = DEFAULT_RIGHT_SLOTS
+ 
+ 
+@@ -268,9 +278,9 @@
+             topics.append( Topic(kw).__of__(self) )
+         return topics
+ 
+-    # Use getCategories in preference to getTopics
+-    security.declareProtected(perms.View, 'getCategories')
+-    getCategories = getTopics
++    # Use q_getCategories in preference to getTopics
++    security.declareProtected(perms.View, 'q_getCategories')
++    q_getCategories = getTopics
+ 
+     def _getKeywordsForBlogEntries(self):
+         """Return a sequence of all keywords that are associatd with
+diff -Nru --exclude='*.pyc' Quills.old/WeblogEntry.py Quills/WeblogEntry.py
+--- Quills.old/WeblogEntry.py	2006-12-29 18:28:56.000000000 +0300
++++ Quills/WeblogEntry.py	2007-01-05 03:06:14.000000000 +0300
+@@ -135,8 +135,8 @@
+     def end(self):
+         return self.effective()
+ 
+-    security.declareProtected(perms.View, 'getCategories')
+-    def getCategories(self):
++    security.declareProtected(perms.View, 'q_getCategories')
++    def q_getCategories(self):
+         """See IWeblogEntry.
+         """
+         qt = getToolByName(self, 'quills_tool')
+@@ -148,7 +148,7 @@
+         return topics
+ 
+     # BBB: Alias for backwards compatibility (which we probably don't need)
+-    #getEntryCategories = getCategories
++    #getEntryCategories = q_getCategories
+ 
+     security.declareProtected(perms.View, 'getExcerpt')
+     def getExcerpt(self):
+diff -Nru --exclude='*.pyc' Quills.old/config.py Quills/config.py
+--- Quills.old/config.py	2006-12-29 18:28:56.000000000 +0300
++++ Quills/config.py	2007-01-05 02:43:00.000000000 +0300
+@@ -19,9 +19,12 @@
+ # You should have received a copy of the GNU General Public License
+ # along with Quills; if not, write to the Free Software
+ # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++#
++# Modified by rd
+ 
+ from Products.CMFCore.permissions import AddPortalContent
+ from Products.Archetypes.public import DisplayList
++from Products.vnsec.config import MEMBER_LEFTSLOTS, MEMBER_RIGHTSLOTS, MEMBER_FOLDERS
+ 
+ ADD_CONTENT_PERMISSION = AddPortalContent
+ PROJECTNAME = "Quills"
+@@ -38,14 +41,13 @@
+     {'id': 'Quills.css', 'media': 'all', 'rendering': 'import'},
+     )
+ 
+-DEFAULT_LEFT_SLOTS  = ('here/portlet_archives/macros/portlet',
+-                       )
+-DEFAULT_RIGHT_SLOTS = ('here/portlet_quills/macros/portlet',
+-                       'here/portlet_tag_cloud/macros/portlet',
+-                       )
++DEFAULT_LEFT_SLOTS  = MEMBER_LEFTSLOTS
++                       
++DEFAULT_RIGHT_SLOTS = MEMBER_RIGHTSLOTS
+ 
+ # Toggle to determine whether a 'topic_images' folder should be created
+ # automatically in each new Weblog instance.
+-CREATE_TOPIC_IMAGES_FOLDERS = True
++
++CREATE_FOLDERS = MEMBER_FOLDERS
+ 
+ GLOBALS = globals()
+diff -Nru --exclude='*.pyc' Quills.old/interfaces.py Quills/interfaces.py
+--- Quills.old/interfaces.py	2006-12-29 18:28:56.000000000 +0300
++++ Quills/interfaces.py	2007-01-05 03:06:20.000000000 +0300
+@@ -26,7 +26,7 @@
+     """A weblog entry.
+     """
+ 
+-    def getCategories():
++    def q_getCategories():
+         """Return the categories/topics for this entry.
+         """
+ 
+diff -Nru --exclude='*.pyc' Quills.old/skins/Quills/entry_macros.pt Quills/skins/Quills/entry_macros.pt
+--- Quills.old/skins/Quills/entry_macros.pt	2006-12-29 18:28:46.000000000 +0300
++++ Quills/skins/Quills/entry_macros.pt	2007-01-05 03:14:53.000000000 +0300
+@@ -139,7 +139,7 @@
+       <div class="weblog-topic-images"
+            tal:define="entry nocall:entry|nothing;
+                        weblog nocall:weblog|nothing;
+-                       topics python:entry.getCategories()"
++                       topics python:entry.q_getCategories()"
+            tal:condition="topics">
+ 
+         <tal:comment condition="nothing">
+@@ -177,7 +177,7 @@
+       <div class="weblog-topics"
+            tal:define="entry nocall:entry|nothing;
+                        weblog nocall:weblog|nothing;
+-                       categories entry/getCategories"
++                       categories entry/q_getCategories"
+            tal:condition="categories">
+         <tal:comment condition="nothing">
+           Parameters
+diff -Nru --exclude='*.pyc' Quills.old/skins/Quills/getCategories.py Quills/skins/Quills/getCategories.py
+--- Quills.old/skins/Quills/getCategories.py	2006-12-29 18:28:46.000000000 +0300
++++ Quills/skins/Quills/getCategories.py	1970-01-01 03:00:00.000000000 +0300
+@@ -1,27 +0,0 @@
+-## Script (Python) "getCategories"
+-##bind container=container
+-##bind context=context
+-##bind namespace=
+-##bind script=script
+-##bind subpath=traverse_subpath
+-##parameters=
+-##title=Return the proper set of Weblog Entries based on subpath
+-##
+-
+-traverse_subpath
+-
+-if len(traverse_subpath):
+-    path = context.absolute_url().replace(context.portal_url(),"")
+-    blogentries = context.portal_catalog(portal_type='WeblogEntry',
+-            sort_on='effective',
+-            sort_order='reverse',
+-            review_state='published',
+-            Subject = { 'query':traverse_subpath ,
+-                        'operator':'and'},
+-            path = { 'query':path,
+-                     'level':1},
+-            )
+-    return blogentries
+-
+-else:
+-    return []
+diff -Nru --exclude='*.pyc' Quills.old/skins/Quills/getCloud.py Quills/skins/Quills/getCloud.py
+--- Quills.old/skins/Quills/getCloud.py	2006-12-29 18:28:46.000000000 +0300
++++ Quills/skins/Quills/getCloud.py	2007-01-05 03:06:35.000000000 +0300
+@@ -12,7 +12,7 @@
+ weblog = context.quills_tool.getParentWeblog(context)
+ 
+ #Get a list of topics, sorted alphabetically
+-topics = weblog.getCategories()
++topics = weblog.q_getCategories()
+     
+ if not topics:
+     return []
+diff -Nru --exclude='*.pyc' Quills.old/skins/Quills/portlet_blogcalendar.pt Quills/skins/Quills/portlet_blogcalendar.pt
+--- Quills.old/skins/Quills/portlet_blogcalendar.pt	2006-12-29 18:28:46.000000000 +0300
++++ Quills/skins/Quills/portlet_blogcalendar.pt	2007-01-05 02:44:37.000000000 +0300
+@@ -91,7 +91,7 @@
+              id="dummy"
+              tal:attributes="id python:'day%d%0.2d%0.2d' % (year, month, day['day']) "
+              tal:condition="day/event">
+-          <div class="date" tal:content="python:here.toPortalTime('%d/%0.2d/%0.2d' % (year, month, day['day']))">
++          <div class="date" tal:content="python:here.toLocalizedTime('%d/%0.2d/%0.2d' % (year, month, day['day']))">
+             2001-04-11
+           </div>
+           <tal:event repeat="anevent day/eventslist">
+diff -Nru --exclude='*.pyc' Quills.old/skins/Quills/q_getCategories.py Quills/skins/Quills/q_getCategories.py
+--- Quills.old/skins/Quills/q_getCategories.py	1970-01-01 03:00:00.000000000 +0300
++++ Quills/skins/Quills/q_getCategories.py	2007-01-05 03:15:02.000000000 +0300
+@@ -0,0 +1,27 @@
++## Script (Python) "q_getCategories"
++##bind container=container
++##bind context=context
++##bind namespace=
++##bind script=script
++##bind subpath=traverse_subpath
++##parameters=
++##title=Return the proper set of Weblog Entries based on subpath
++##
++
++traverse_subpath
++
++if len(traverse_subpath):
++    path = context.absolute_url().replace(context.portal_url(),"")
++    blogentries = context.portal_catalog(portal_type='WeblogEntry',
++            sort_on='effective',
++            sort_order='reverse',
++            review_state='published',
++            Subject = { 'query':traverse_subpath ,
++                        'operator':'and'},
++            path = { 'query':path,
++                     'level':1},
++            )
++    return blogentries
++
++else:
++    return []
+diff -Nru --exclude='*.pyc' Quills.old/syndication.py Quills/syndication.py
+--- Quills.old/syndication.py	2006-12-29 18:28:56.000000000 +0300
++++ Quills/syndication.py	2007-01-05 03:48:02.000000000 +0300
+@@ -47,6 +47,12 @@
+ 
+     implements(IFeedSource)
+ 
++    def getMaxEntries(self):
++        """See IFeed.
++        """
++        syntool = getToolByName(self.context, 'portal_syndication')
++        return syntool.getMaxItems()
++
+     def getFeedEntries(self, max_only=True):
+         """See IFeedSoure
+         """
+diff -Nru --exclude='*.pyc' Quills.old/tests/test_weblogentry.py Quills/tests/test_weblogentry.py
+--- Quills.old/tests/test_weblogentry.py	2006-12-29 18:28:48.000000000 +0300
++++ Quills/tests/test_weblogentry.py	2007-01-05 03:06:40.000000000 +0300
+@@ -63,7 +63,7 @@
+ 
+     def testEntryCategories(self):
+         entry = getattr(self.weblog, "entry")
+-        cats = [cat for cat in entry.getCategories()]
++        cats = [cat for cat in entry.q_getCategories()]
+         self.failUnlessEqual(cats, [])
+ 
+ 

@@ -1,0 +1,109 @@
+You might find some kernel oops messages related to DMI in dmesg. Don't be worry. 
+This is a small issue between PaX/grsec and Xen domU kernel and I've reported to 
+them. In the mean time, I've implemented a temporary kernel patch.
+
+Please refer to below mail thread for more information
+
+cheers,
+
+--rd
+
+
+
+---------
+Date: Mon, 23 Nov 2009 17:17:41 +0800
+Message-ID: <481d3c750911230117g7dac2dc1gdc9250a9df3408d0@mail.gmail.com>
+Subject: Re: Server
+From: Red Dragon <rd@vnsecurity.net>
+To: Eugene Teo <eugeneteo@kernel.org>
+Content-Type: multipart/alternative; boundary=00151748ded226eb150479064cb1
+
+--00151748ded226eb150479064cb1
+Content-Type: text/plain; charset=ISO-8859-1
+
+On Mon, Nov 23, 2009 at 4:35 PM, Eugene Teo <eugeneteo@kernel.org> wrote:
+
+> The real marathon? Or the online hacking marathon? hehe.
+>
+
+Yes, real one, Penang Bridge International Marathon. I went for the 10KM one
+only. Next years I will try 22km half marathon.
+
+On Mon, Nov 23, 2009 at 4:36 PM, Eugene Teo <eugeneteo@kernel.org> wrote:
+
+> root       772 8481456  0.2 118476 3352 ?      Ssl  Nov20 21114574:23
+> /usr/sbin/console-kit-daemon
+>
+> wtf? 21114574:23?? hehe
+>
+
+Could be clock driff problem. Recommend to run ntp client ;)
+
+On Mon, Nov 23, 2009 at 4:43 PM, Eugene Teo <eugeneteo@kernel.org> wrote:
+
+> root@VM10:/etc/ssh# grep -i dmi /boot/config-2.6.31-14-server
+> CONFIG_DMI=y
+>
+
+It's kernel come together with the image. I don't use it tho. I used my own
+Xen kernel with some hardened patches for all the kernels
+
+root@VM10:/etc/ssh# uname -a
+> Linux VM10 2.6.31-xen-r7vns-domU #3 SMP Tue Nov 17 21:05:30 UTC 2009 x86_64
+> GNU/Linux
+>
+> The domU kernels probably need to have DMI turned off, if not you will see
+> the warnings in dmesg:
+>
+> [    2.054562] ------------[ cut here ]------------
+>
+
+Yes I know this from the beginning and this one shows on all the VMs. DMI
+scanning can be turned off by enabling kernel for small systems (embedded
+devices). Still, it won't work for SMP kernel due to the bad dependencies
+- SMP needs hotplug to be enabled (if disable --> compile failed as it will
+call disable nonboot-core at boot time which needs CPU Hotplug support)
+- CPU Hotplug needs DMI
+
+The work around for this is to turn off SMP or modify the kernel code
+directly (code which calls disable_nonboot_cpus) which I don't want to. So I
+let it be as it is (just warning message during DMI scan only, no real
+harm). In fact, I'm waiting for the official fix form PaX/grsec team to make
+it works under domU for newer kernel and use the more secure kernel for all
+the VMs.
+
+Notes: I only changed sshd_config, network config, hosts, hostname,
+time/clock settings (set to UTC) and 'apt-get install iptables' from the
+default image.
+
+Cheers,
+
+--rd
+
+
+> [    2.054562] ------------[ cut here ]------------
+> [    2.054565] WARNING: at
+> /usr/src/linux-2.6.31-xen-r7/drivers/firmware/dmi_scan.c:427
+> dmi_matches+0x97/0xa0()
+> [    2.054569] dmi check: not initialized yet.
+> [    2.054571] Pid: 1, comm: swapper Tainted: G        W
+> 2.6.31-xen-r7vns-domU #3
+> [    2.054574] Call Trace:
+> [    2.054576]  [<ffffffff811d8427>] ? dmi_matches+0x97/0xa0
+> [    2.054580]  [<ffffffff810309c3>] warn_slowpath_common+0x73/0xc0
+> [    2.054583]  [<ffffffff81030a94>] warn_slowpath_fmt+0x64/0x70
+> [    2.054586]  [<ffffffff8119a882>] ? put_device+0x12/0x20
+> [    2.054590]  [<ffffffff8102616e>] ? __wake_up+0x4e/0x70
+> [    2.054593]  [<ffffffff811d8427>] dmi_matches+0x97/0xa0
+> [    2.054596]  [<ffffffff811d84a0>] dmi_check_system+0x20/0x50
+> [    2.054599]  [<ffffffff81370ae8>] ? atkbd_init+0x0/0x28
+> [    2.054602]  [<ffffffff81370af8>] atkbd_init+0x10/0x28
+> [    2.054605]  [<ffffffff81007047>] do_one_initcall+0x37/0x1d0
+> [    2.054609]  [<ffffffff8135e775>] kernel_init+0x162/0x1ba
+> [    2.054612]  [<ffffffff8100a56a>] child_rip+0xa/0x20
+> [    2.054615]  [<ffffffff8135e613>] ? kernel_init+0x0/0x1ba
+> [    2.054618]  [<ffffffff8100a560>] ? child_rip+0x0/0x20
+> [    2.054620] ---[ end trace a7919e7f17c0a76e ]---
+> Did you see this in other VMs?
+>
+> Eugene

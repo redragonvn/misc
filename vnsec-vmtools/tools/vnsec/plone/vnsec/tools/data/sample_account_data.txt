@@ -1,0 +1,11 @@
+#
+# sample account data demonstrating what 'makeAccounts' expects
+#
+
+joe, Joe User, joe@user.com
+# a comment inbetween
+jane, Jane Master, jane@master.com
+# a mal-formed line
+boss, Big Boss
+foo, Foo Bar, foo@bar.com
+spam, Spam Eggs, spam@eggs.com

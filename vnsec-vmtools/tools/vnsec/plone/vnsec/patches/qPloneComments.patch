@@ -1,0 +1,33 @@
+diff -Nru --exclude='*.pyc' ../Products.orig/qPloneComments/skins/qplonecomments/2.0.5/discussionitem_view.pt qPloneComments/skins/qplonecomments/2.0.5/discussionitem_view.pt
+--- ../Products.orig/qPloneComments/skins/qplonecomments/2.0.5/discussionitem_view.pt	2006-12-11 14:11:14.000000000 +0300
++++ qPloneComments/skins/qplonecomments/2.0.5/discussionitem_view.pt	2007-01-05 02:55:15.000000000 +0300
+@@ -35,7 +35,7 @@
+                <tal:x tal:replace="creator"
+                       tal:condition="not:isMember">Name</tal:x>
+                <span i18n:translate="label_commented_at">at</span>
+-               <span tal:replace="python:portal.toPortalTime(here.modified(),
++               <span tal:replace="python:portal.toLocalizedTime(here.modified(),
+                                          long_format=1)">8/23/2001 12:40:44 PM</span>
+                <span tal:condition="python:ifModerate and not isPublished">[pending]</span>
+            </div>
+diff -Nru --exclude='*.pyc' ../Products.orig/qPloneComments/skins/qplonecomments/2.0.5/viewThreadsAtBottom.pt qPloneComments/skins/qplonecomments/2.0.5/viewThreadsAtBottom.pt
+--- ../Products.orig/qPloneComments/skins/qplonecomments/2.0.5/viewThreadsAtBottom.pt	2006-12-11 14:11:14.000000000 +0300
++++ qPloneComments/skins/qplonecomments/2.0.5/viewThreadsAtBottom.pt	2007-01-05 02:54:56.000000000 +0300
+@@ -66,7 +66,7 @@
+                         <span i18n:translate="label_anonymous_user"
+                               tal:condition="anonymous_creator">Anonymous User</span>
+                         <span i18n:translate="label_commented_at">at</span>
+-                        <span tal:replace="python:portal.toPortalTime(reply.modified(),
++                        <span tal:replace="python:portal.toLocalizedTime(reply.modified(),
+                                                   long_format=1)">8/23/2001 12:40:44 PM</span>
+                         <span tal:condition="python:ifModerate and not isPublished">[pending]</span>
+                     </div>
+@@ -146,7 +146,7 @@
+                                 <span i18n:translate="label_anonymous_user"
+                                       tal:condition="anonymous_creator">Anonymous User</span>
+                                 <span i18n:translate="label_commented_at">at</span>
+-                                <span tal:replace="python:portal.toPortalTime(lst_object.modified(),
++                                <span tal:replace="python:portal.toLocalizedTime(lst_object.modified(),
+                                                           long_format=1)">8/23/2001 12:49:08 PM</span>)
+                             </a>
+                         </div>

@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      i18n:domain="plone">
+
+<body>
+
+<!-- THE SEARCHBOX DEFINITION -->
+<div class="portlet" id="portlet-searchbox" metal:define-macro="portlet">
+  <h5 i18n:translate="text_search">Search</h5>
+ <div class="portletBody">
+  <div class="portletContent">
+    <form name="searchform"
+          action="search"
+          tal:attributes="action string:${portal_url}/search" >
+        <label for="searchGadget" class="hiddenStructure" i18n:translate="text_search">Search</label>
+        <input id="searchGadget"
+               name="SearchableText"
+               type="text"
+               size="12"
+               value=""
+               alt="Search"
+               title="Search"
+               accesskey="accesskeys-search"
+               i18n:attributes="alt accesskey title"
+               tal:attributes="value request/SearchableText|nothing;
+                               tabindex tabindex/next" class="visibility:visible" />
+        <!--br/> <br/-->
+        <input class="searchButton"
+               type="submit"
+               value="Go"
+           accesskey="accesskeys-search"
+           tal:attributes="tabindex tabindex/next"
+               i18n:attributes="value accesskey" />
+    </form>
+  </div>
+ </div>
+</div>
+
+</body>
+</html>

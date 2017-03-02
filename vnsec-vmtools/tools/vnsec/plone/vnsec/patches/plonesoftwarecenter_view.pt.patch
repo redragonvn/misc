@@ -1,0 +1,30 @@
+--- /opt/Plone-2.5/zeocluster/Products/PloneSoftwareCenter/skins/plonesoftwarecenter/plonesoftwarecenter_view.pt	2006-12-25 11:48:06.000000000 +0300
++++ /opt/Plone-2.5/zeocluster/Products/vnsec/skins/vnsec-common/plonesoftwarecenter_view.pt	2006-12-28 21:39:42.000000000 +0300
+@@ -60,16 +60,6 @@
+                />
+     </form>
+ 
+-    <form tal:condition="isAnon"
+-          tal:attributes="action view/login_action">
+-
+-        <input class="standalone"
+-               type="submit"
+-               value="Log in to add Software Project"
+-               i18n:attributes="value"
+-               />
+-    </form>
+-    
+     <p class="discreet" 
+        style="text-align: right; clear: both;">
+       Currently listing <span tal:replace="view/project_count" /> projects 
+@@ -143,10 +133,6 @@
+     </div>
+     
+     <div class="visualClear"><!----></div>
+-    
+-    <div class="poweredBy">
+-    Powered by <a class="link-plain" href="http://plone.org/products/plonesoftwarecenter">Plone Software Center</a>
+-    </div>
+ 
+   </div>
+ 

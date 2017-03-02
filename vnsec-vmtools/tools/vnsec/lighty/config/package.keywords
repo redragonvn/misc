@@ -1,0 +1,4 @@
+dev-lang/php
+dev-php5/suhosin
+www-servers/lighttpd
+www-apps/wordpress

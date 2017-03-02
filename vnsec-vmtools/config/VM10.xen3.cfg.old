@@ -1,0 +1,13 @@
+bootloader = "/usr/bin/pygrub"
+extra = "fastboot"
+vcpus = 2
+memory = "1536"
+name = "VM10"
+vif = ['ip=88.198.55.220, vifname=vifVM10']
+ip = "88.198.55.220"
+gateway = "88.198.55.199"
+netmask = "255.255.255.224"
+
+disk = ['phy:/dev/vg/VM10,/dev/xvda1,w', 'phy:/dev/vg/VM10-SWAP,/dev/xvda2,w' ]
+#root = "/dev/xvda1 ro"
+#extra = "TERM=xterm xencons=tty console=tty1"

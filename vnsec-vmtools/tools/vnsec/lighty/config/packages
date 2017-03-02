@@ -1,0 +1,9 @@
+lighttpd
+php
+syslog-ng
+vixie-cron
+glibc
+gcc
+suhosin
+mysql
+portage

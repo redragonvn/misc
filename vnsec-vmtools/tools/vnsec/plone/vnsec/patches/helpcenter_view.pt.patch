@@ -1,0 +1,32 @@
+--- /opt/Plone-2.5/zeocluster/Products/PloneHelpCenter/skins/plone_help_center/helpcenter_view.pt	2006-12-06 19:59:21.000000000 +0300
++++ /opt/Plone-2.5/zeocluster/Products/vnsec/skins/vnsec-common/helpcenter_view.pt	2006-12-28 22:15:54.000000000 +0300
+@@ -71,6 +71,9 @@
+                            
+                     <br />
+                     
++		    <span tal:condition="nothing">
++		    <!-- Added by rd - to remove search option -->
++
+                     <span i18n:translate="searchform_in" tal:omit-tag="">in</span>
+                     
+                       <select name="phc_selection">
+@@ -83,6 +86,8 @@
+                         <option value="glossary" i18n:translate="phc_definition">Glossary definitions</option>
+                         <option value="manual" i18n:translate="phc_referencemanual">Reference manuals</option>
+                     </select>
++		    </span>
++
+                 </fieldset>
+             </form>
+ 
+@@ -181,10 +186,6 @@
+ 
+         <div class="visualClear"><!-- --></div>
+ 
+-        <div class="poweredBy">
+-          Powered by <a class="link-plain" href="http://plone.org/products/plonehelpcenter">Plone Help Center</a>
+-        </div>
+-
+     </metal:main>
+ 
+   </body>

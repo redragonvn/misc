@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      i18n:domain="plone">
+
+<body>
+
+<div id="portal-colophon" metal:define-macro="colophon" i18n:domain="plone">
+      <a href="http://plone.org"
+         class="colophonIcon colophonIconPlone"
+         title="This Plone site was built using Plone CMS, the Open Source
+Content Management
+ System. Click for more information."
+         i18n:attributes="title title_built_with_plone;"
+         i18n:translate="label_powered_by_plone">
+        Powered by Plone CMS, the Open Source Content Management System
+      </a>
+</div>
+
+</body>
+</html>

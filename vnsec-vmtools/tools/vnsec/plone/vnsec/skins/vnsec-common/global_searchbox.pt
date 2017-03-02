@@ -1,0 +1,13 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      i18n:domain="plone">
+
+<body>
+
+<!-- THE SEARCHBOX DEFINITION -->
+<div id="portal-searchbox" metal:define-macro="quick_search">
+    <img src="#"
+         tal:attributes="src string:${here/portal_url}/right_image.gif" />
+    </div>
+
+</body>
+</html>

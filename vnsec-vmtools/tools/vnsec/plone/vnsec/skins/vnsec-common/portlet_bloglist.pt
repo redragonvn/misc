@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="vnsec">
+<body>
+<div metal:define-macro="portlet" tal:on-error="nothing" 
+	tal:define="mtool here/portal_membership;
+                membersfolders mtool/getMembersFolder">
+    <dl class="portlet" id="portlet-bloglist">
+       <dt class="portletHeader">Members Blogs</dt>
+       <dd class="portletItem lastItem">
+	   	<ul class="portletNavigationTree navTreeLevel0">
+             <tal:block tal:repeat="home membersfolders/objectValues">
+                <li class="navTreeItem visualNoMarker" tal:define="ptype home/getPortalTypeName"
+                    tal:condition="python: ptype == 'Weblog'">
+				    <div class="visualIcon contenttype-weblog">
+                    	<a tal:attributes="href home/absolute_url" class="state-visible visualIconPadding" title=""><title tal:replace="home/title" /></a>
+					</div>
+                </li>
+             </tal:block>
+		</ul>
+       </dd>
+    </dl>
+ </div>
+ </body>
+</html>

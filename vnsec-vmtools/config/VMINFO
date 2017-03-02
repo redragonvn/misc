@@ -1,0 +1,6 @@
+#IP,VMNAME,HOSTNAME,OWNER,NETWORK-TYPE,PORT-FORWARD(SRC:DST),comment
+88.198.55.199,Dom0,solar,VNSEC,GW,,Dom 0
+88.198.55.209,VM0,sun,VNSEC,ROUTE,,web hosting - vnsec.net
+88.198.55.220,VM10,VM10,ART,ROUTE,,3rd server - Arteam 
+88.198.55.221,VM20,VM20,MYBB,ROUTE,,3rd server - nucuoitraitim
+172.16.1.10,VM1,venus,VNSEC,NAT,80:80 443:22 22:22,member's shell server 

@@ -1,0 +1,575 @@
+/* <dtml-comment>
+ *  This is the file where you put your CSS changes. 
+ *  You should preferrably use this and override the 
+ *  relevant properties you want to change here instead 
+ *  of customizing plone.css to survive upgrades. Writing
+ *  your own plone.css only makes sense for very heavy 
+ *  customizations. Useful variables from Plone are 
+ *  documented at the bottom of this file.
+ *
+ *  -- Alexander Limi, http://www.plonesolutions.com
+ </dtml-comment>*/
+ 
+/* <dtml-var "enableHTTPCompression(request=REQUEST, debug=1, css=1)"> (this is for http compression) */
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+
+/* DELETE THIS LINE AND PUT YOUR CUSTOM STUFF HERE */
+#portal-siteactions,
+
+
+body {
+
+background-color:&dtml-globalBorderColor;;
+
+}
+
+table.listing
+{
+width: 100%
+}
+table.listing,
+table.listing td,
+table.listing tr
+{
+   border: 1pt &dtml-borderStyle; #D0D0D0;
+   /*border= 1px &dtml-borderStyle; */
+   padding: 0.5em;
+   font-size: 100%;
+   border-collapse: collapse;
+}
+
+
+#portal-logo {
+background: url(&dtml-portal_url;/&dtml-logoName;) no-repeat;
+border: 0;
+margin: 1.2em 1em 0em 0em;
+padding: 0;
+}
+
+#portal-logo a {
+display: block;
+text-decoration: none;
+overflow: hidden;
+border: 0;
+margin: 0;
+padding: 0;
+padding-top: <dtml-var "_[logoName].height">px;
+height: 0px !important;
+height /**/: <dtml-var "_[logoName].height">px;
+width: <dtml-var "_[logoName].width">px;
+cursor: pointer;
+}
+
+/* searchbox style and positioning */
+/* used as second logo on the right */
+
+
+/* another color for the headers */
+
+#portal-column-content h1, h2, h3 {
+color: &dtml-contentViewFontColor;;
+}
+
+/* Portal area width is used for the left and right borders */
+
+#visual-portal-wrapper {
+width: 95%;
+position: relative;
+margin-left: auto; 
+margin-right: auto;
+background-color: &dtml-backgroundColor;;
+}
+
+
+/* another color for the headers */
+
+#portal-column-content h1, h2, h3 {
+color: &dtml-contentViewFontColor;;
+}
+
+/* Portal area width is used for the left and right borders */
+
+
+
+#portal-personaltools {
+/* Bar with personalized menu (user preferences, favorites etc) */
+/* personal bar used as horizontal navigation */
+background-color: &dtml-globalBackgroundColor;;
+color: &dtml-fontColor;;
+/*padding: 1px 0 1px 0;
+height: auto;*/
+width: 100%;
+margin: 0px 0 0 0;
+text-align: right;
+text-transform: &dtml-textTransform;;
+list-style: none;
+z-index: 0;
+border: 0;
+border-top: 0px #ffffff solid;
+border-bottom:1px #B9B9B9 solid;
+    padding: 0 0 0 0;
+    white-space: nowrap;
+    list-style: none;
+    line-height: normal;
+}
+
+#portal-personaltools ul {
+padding-left: 0em;
+padding-right: 0em;
+margin-left: 0em;
+}
+
+#portal-personaltools li {
+background: transparent;
+padding-left: 0em;
+padding-right: 0em;
+margin-left: 0em;
+color: &dtml-fontColor;;
+display: inline;
+border-top-style: none;      
+border-bottom-style: none;   
+border-right-style: none;     
+border-left-style: none; 
+border-left-width: 1px
+}
+
+/*#portal-personaltools li.portalLoggedIn {
+text-transform: none;
+padding-left: 0;
+padding-right: 0;
+border-bottom-style: none;   
+border-right-style: none;     
+border-left-style: none; 
+} 
+*/
+
+#portal-personaltools li.portalNotLoggedIn {
+text-transform: none;
+padding-left: 0;
+padding-right: 0;
+border-bottom-style: none;   
+border-right-style: none;     
+border-left-style: none; 
+}  
+
+
+#portal-personaltools li.portalUser {
+text-transform: bold;
+color:  &dtml-backgroundColor;;
+padding-left: 1em;
+padding-right: 1em;
+border-bottom-style: none;   
+border-right-style: none;     
+border-left-style: none; 
+} 
+
+#portal-personaltools li a {
+text-decoration: none;
+color: &dtml-fontColor;;
+padding-left: 1em;
+padding-right: 1em;
+} 
+
+#portal-personaltools li a.username {
+text-decoration: none;
+font-weight: bold;
+color: &dtml-backgroundColor;;
+padding-left: 0.5em;
+padding-right: 0em;
+}
+
+#portal-personaltools li.selected a {
+/* The selected tab. There's only one of this */
+background-color: &dtml-evenRowBackgroundColor;;
+/*border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;*/
+color: &dtml-globalFontColor;;
+}
+
+#portal-personaltools li a:hover {
+background-color: &dtml-evenRowBackgroundColor;;
+color: &dtml-globalFontColor;;
+/*border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;*/
+}
+
+/* Site-wide action menu - font size, contact, index, sitemap etc */
+#portal-siteactions {
+background-color: &dtml-globalBackgroundColor;;
+white-space: nowrap;
+width:100%;
+list-style: none;
+padding: 1px 0 1px 0;
+margin-top: 0;
+margin-right: auto;
+margin-left: auto;
+margin-bottom:0;
+height: auto;
+line-height: normal;
+/*float: center;*/
+/*z-index: 2;*/
+/*position:absolute;*/
+}
+
+#portal-siteactions li {
+display: inline;
+border-right-style: solid; 
+border-right-width: 1px
+}
+
+#portal-siteactions li a {
+text-decoration: none;
+color: &dtml-fontColor;;
+height: auto;
+border: 0;
+padding-left: 1em;
+padding-right: 1em;
+margin-right: 0.2em;
+text-transform: capitalize;
+}
+
+#portal-siteactions li.selected a {
+background-color: &dtml-evenRowBackgroundColor;;
+color: &dtml-globalFontColor;;
+border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;; 
+}
+
+#portal-siteactions li a:hover {
+background-color: &dtml-evenRowBackgroundColor;;
+color: &dtml-globalFontColor;;
+border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+}
+
+/* searchbox style and positioning */
+#portal-searchbox {
+float: right;
+clear: right;
+background-color: transparent;
+margin: 2.5em 0 0 0;
+padding: 0 2em 0 0;
+text-align: right;
+text-transform: &dtml-textTransform;;
+white-space: nowrap;
+z-index: 2;
+}
+
+
+
+/* searchbox portlet */
+/*#portlet-searchbox { */
+/* display: block;*/
+/* padding-top: .5em;*/
+/* white-space: nowrap;*/
+/*}*/
+
+
+#portal-top{
+  background-color: &dtml-contentViewBorderColor;;
+}
+
+#portal-breadcrumbs{
+  background-color:  &dtml-backgroundColor;;
+  border-width: 0;
+  padding-top: .5em;
+}
+
+#portal-breadcrumbs a{
+  text-decoration: none;
+  color: #0033FF;
+  background-color: transparent;
+}
+
+
+.portlet h5 {
+    display: block;
+}
+
+.portalUser li {list-style: none; }
+
+#portlet-personalbar .portletBody{
+    padding: 0em;
+    margin: 0em;
+    display:block;
+    text-align: left;
+}
+
+#portlet-personalbar .portletContent{
+    padding: 0em;
+    margin: 0em;
+    display:block;
+    text-align: left;
+}
+
+#portlet-personalbar ul {
+list-style: none; 
+}
+
+#portlet-personalbar li a {
+    background-color: transparent;
+    
+    margin-left: 0em;
+    margin-right: 1em;
+    padding-left: 0em;
+    line-height: normal;
+    border-width: 0 !important;
+    height: auto;
+    background-image: none;
+    text-decoration: none;
+    border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    display: block;
+}
+
+#portlet-personalbar li a:hover {
+  background-color: &dtml-globalBackgroundColor;;
+  color: &dtml-globalFontColor;;
+  border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+}
+
+
+#portal-globalnav {
+color: &dtml-backgroundColor;;
+background-color: transparent;
+padding: 0em 0em 0em 2em;
+white-space: nowrap;
+list-style: none;
+margin: 0;
+height: auto;
+line-height: normal;
+}
+
+#portal-globalnav li {
+display: inline;
+}
+
+#portal-globalnav li a {
+/* The normal, unselected tabs. They are all links */
+color: &dtml-backgroundColor;;
+background-color:   transparent;
+border-color: &dtml-globalBackgroundColor;;
+border-width: &dtml-borderWidth;;
+border-style: &dtml-borderStyle;
+height: auto;
+margin-right: 0.5em;
+padding: 0em 1.25em;
+text-decoration: none;
+text-transform: &dtml-textTransform;;
+}
+
+#portal-globalnav li.selected a {
+/* The selected tab. There's only one of this */
+background-color: &dtml-globalBackgroundColor;;
+border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBackgroundColor;;
+/*border-bottom: &dtml-globalBackgroundColor; &dtml-borderWidth; &dtml-borderStyle;;*/
+color: &dtml-globalFontColor;;
+}
+#portal-globalnav li a:hover {
+background-color: &dtml-globalBackgroundColor;;
+border-color: &dtml-globalBackgroundColor;;
+/*border-bottom-color: &dtml-globalBackgroundColor;;*/
+color: &dtml-globalFontColor;;
+}
+
+
+/* Navigation tree styling */
+
+/* position of items in the  portlet */
+
+#portlet-navigation-tree .portletBody{
+ padding-top: 0em;
+ padding-right: 0em;
+ padding-bottom: 0em;
+ padding-left: 0em;
+ margin:0;
+}
+
+#portlet-navigation-tree .portletContent{
+ padding-top: 0em;
+ padding-right: 0em;
+ padding-bottom: 0em;
+ padding-left: 0em;
+}
+
+
+
+/*  remove the folder Icons*/
+.navIcon, .navIconRoot{
+    display: none;
+}
+
+
+/* */
+.navItemText {
+    margin-left: 0em;
+}
+
+
+/* Navigation Items padding-top and -bottom determins the vertical size of NavItems */
+.navRootItem, .navItem {
+    margin-left: 0em;
+    display: block;
+    border-width: 0 !important;
+    background-image: none;
+    padding-top: 0.5em;
+    padding-right: 0em;
+    padding-bottom: 0.5em;
+    padding-left 0em;
+}
+
+
+/* gives border and color to the navigation menu item and gives the white box effect to sub-menu */
+.navLevel1 { 
+    border: 0 solid #8cacbb;
+    border-top-width: 1px !important;
+    Border-color:&dtml-evenRowBackgroundColor;;
+    /*white-space: nowrap;*/
+    margin-left: 0;
+    background-color: #f7f9fa;
+    /*background-color:#FFCC99;*/
+}
+
+
+#portlet-navigation-tree a:hover {
+background-color: &dtml-evenRowBackgroundColor;;
+color: &dtml-globalFontColor;;
+border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+font-weight: bold;
+}
+
+/* The deprecated navtree levels. These will go away once we ship with new
+navtree in 2.1 */
+.navRootItem { margin-left: 0em;  padding-left: 1em; background-color: #f7f9fa;}
+.navLevel1 { margin-left: 0em;  padding-left: 1em; }
+.navLevel2 { margin-left: 0em;  padding-left: 3em; }
+.navLevel3 { margin-left: 0em;  padding-left: 5em; color:black;}
+.navLevel4 { margin-left: 0em;  padding-left: 4em;}
+.navLevel5 { margin-left: 0em;  padding-left: 4.5em;}
+.navLevel6 { margin-left: 0em;  padding-left: 5em;}
+.navLevel7 { margin-left: 0em;  padding-left: 5.5em;}
+.navLevel8 { margin-left: 0em;  padding-left: 6em;}
+
+.currentNavItem {
+background-color: &dtml-notifyBackgroundColor;;
+color: &dtml-globalFontColor;;
+font-weight: bold;
+}
+
+#portal-footer {
+background-color: &dtml-globalBackgroundColor;;
+border-top: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+border-bottom: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+float: none;
+margin: 0em 0em 0em 0em;
+padding: 4px 0em 5px 0em;
+text-align: center;
+}
+
+#portal-footer li {
+background: transparent;
+color: &dtml-globalFontColor;;
+padding-left: 0em;
+padding-right: 0em;
+margin-left: 0em;
+display: inline;
+border-top-style: none;
+border-bottom-style: none;
+border-right-style: none;
+border-left-style: none;
+}
+
+#portal-footer li a {
+text-decoration: none;
+color: &dtml-globalFontColor;;
+padding-left: 0.5em;
+padding-right: 0.5em;
+}
+
+#portal-footer li a:hover {
+background-color: &dtml-globalBackgroundColor;;
+color: &dtml-globalFontColor;;
+border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+}
+
+#portal-colophon {
+color: &dtml-globalBackgroundColor;;
+background-color: &dtml-contentViewBorderColor;;
+float: none;
+margin: 0em 0em 0em 0em;
+padding: 0.5em 0em 0em 0em;
+text-align: center;
+}
+
+/* </dtml-with> */
+
+/* <dtml-comment> DOCUMENTATION ON PRE-DEFINED PROPERTIES FROM PLONE */
+
+ /* You can insert colors and other variables from Plone's 
+    base_properties by doing:
+    
+    & dtml-variableName ; (without the spaces, excluded here to not make it render)
+    
+    Example:
+    
+    myLink {
+        color: & dtml-fontColor ;   (again, without the spaces)
+    }
+ 
+   This means you can generate your own elements that use Plone's defaults,
+   and respect any customizations people have done. See base_properties for
+   the default values.
+ 
+   These are the available properties:
+   
+   logoName - the file name of the portal logo. 
+   
+   fontFamily - the font family used for all text that is not headers
+   
+   fontBaseSize - the base font size that everything is calculated from
+   
+   fontColor - the main font color
+   
+   backgroundColor - the background color 
+   
+   linkColor - the color used on normal links
+
+   linkActiveColor - color used on active links
+
+   linkVisitedColor - color used on visited links
+   
+   borderWidth - the width of most borders in Plone
+   
+   borderStyle - the style of the border lines, normally solid
+   
+   borderStyleAnnotations - style of border lines on comments etc
+   
+   globalBorderColor - the border color used on the main tabs, the portlets etc
+   
+   globalBackgroundColor - background color for the selected tabs, portlet headings etc
+   
+   globalFontColor - the color of the font in the tabs and in portlet headings
+   
+   headingFontFamily - font family for h1/h2/h3/h4/h5/h6 headlines.
+   
+   headingFontBaseSize - the base size used when calculating the different headline sizes
+   
+   contentViewBorderColor - the content view tabs border color
+   
+   contentViewBackgroundColor - the content view tabs background color
+   
+   contentViewFontColor - the font color used in the content view tabs
+   
+   textTransform - whether to lowercase text in portlets, tabs etc.
+   
+   evenRowBackgroundColor - the background color of even rows in listings
+   
+   oddRowBackgroundColor - the background color of even rows in listings
+   
+   notifyBorderColor - border color of notification elements like the status message, the calendar focus
+   
+   notifyBackgroundColor - background color of notification elements like the status message, the calendar focus
+   
+   discreetColor:string=#999999
+   helpBackgroundColor:string=#ffffe1
+ </dtml-comment>
+ */
+
+

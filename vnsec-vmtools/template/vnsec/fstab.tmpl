@@ -1,0 +1,7 @@
+%ROOTDEV_VM%	/         ext3    noatime            0 1
+%SWAPDEV_VM%	none      swap    sw                 0 0
+%SHAREDEV_VM%	/mnt	  ext3	  noauto,noatime,nodev,nosuid,noexec	0 1
+%SRVDEV_VM%	/srv	  ext3	  noatime	     0 1
+
+proc                    /proc           proc            defaults        0 0
+shm                     /dev/shm        tmpfs           nodev,nosuid,noexec     0 0

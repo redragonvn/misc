@@ -1,0 +1,16 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="vnsec">
+ <body>
+ <div metal:define-macro="portlet" tal:on-error="nothing">
+    <dl class="portlet" id="portlet-dummy" tal:condition="nothing">>
+       <dt class="portletHeader">dummy</dt>
+         <dd class="portletItem odd">
+           <ul>
+           </ul>   
+         </dd>
+    </dl>
+ </div>
+ </body>
+</html>

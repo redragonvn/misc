@@ -1,0 +1,172 @@
+
+
+This is a javascript intensive application and it appears you do not have javascript enabled.
+001	>>> 	
+context 
+context
+002	
+<ContentPanels at /testbed3/front-page> 
+003	>>> 	
+context.getPanelsConfig() 
+context.getPanelsConfig()
+004	
+"[{'pageAlign': 'center',\n  'pageCellPad': '4',\n  'pageCellSpace': '4',\n  'pageColumns': [{'columnPanels': [{'panelObjectPath': './frontpage',\n                                     'panelObjectViewlet': 'viewlet_text',\n                                     'panelSkin': 'alertPortletWrapper',\n                                     'viewletOptions': {'message': '<br><h3 align=center> This is test site for the upcomming vnsecurity.net - please send your feed back to rd@vnsecurity.net</h3><br>',\n                                                        'title': 'Notice'}}],\n                   'columnWidth': '100%'}],\n  'pageStylesheetDynamic': [],\n  'pageStylesheetFixed': [],\n  'pageTitle': 'Untitled page',\n  'pageWidth': '100%'},\n {'pageAlign': 'center',\n  'pageCellPad': '4',\n  'pageCellSpace': '4',\n  'pageColumns': [{'columnPanels': [{'panelObjectPath': './front-page',\n                                     'panelObjectViewlet': 'macro_viewlet',\n                                     'panelSkin': 'defaultPortletWrapper',\n                                     'viewletOptions': {'itemCount': 10,\n                                                        'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n                                                        'showRSS': True,\n                                                        'smartFolderUID': ['6a78dcacef81d5a943bd11ef2a37f0f4'],\n                                                        'viewlet_title': 'Latest News'}},\n                                    {'panelObjectPath': './front-page',\n                                     'panelObjectViewlet': 'macro_viewlet',\n                                     'panelSkin': 'defaultPortletWrapper',\n                                     'viewletOptions': {'itemCount': 5,\n                                                        'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n                                                        'showRSS': True,\n                                                        'smartFolderUID': ['0909fea48078e843f21756b3e3e9cd69'],\n                                                        'viewlet_title': 'Upcomming Events'}}],\n                   'columnWidth': '50%'},\n                  {'columnPanels': [{'panelObjectPath': './front-page',\n                                     'panelObjectViewlet': 'macro_viewlet',\n                                     'panelSkin': 'defaultPortletWrapper',\n                                     'viewletOptions': {'itemCount': 10,\n                                                        'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n                                                        'showRSS': True,\n                                                        'smartFolderUID': ['ad9fbbed529ae1aae9a66d23f7f03dc2'],\n                                                        'viewlet_title': 'Latest Posts'}}],\n                   'columnWidth': '50%'}],\n  'pageStylesheetDynamic': [],\n  'pageStylesheetFixed': [],\n  'pageTitle': 'Untitled page',\n  'pageWidth': '100%'}]" 
+"[{'pageAlign': 'center',\n 'pageCellPad': '4',\n 'pageCellSpace': '4',\n 'pageColumns': [{'columnPanels': [{'panelObjectPath': './frontpage',\n 'panelObjectViewlet': 'viewlet_text',\n 'panelSkin': 'alertPortletWrapper',\n 'viewletOptions': {'message': '
+This is test site for the upcomming vnsecurity.net - please send your feed back to rd@vnsecurity.net
+
+',\n 'title': 'Notice'}}],\n 'columnWidth': '100%'}],\n 'pageStylesheetDynamic': [],\n 'pageStylesheetFixed': [],\n 'pageTitle': 'Untitled page',\n 'pageWidth': '100%'},\n {'pageAlign': 'center',\n 'pageCellPad': '4',\n 'pageCellSpace': '4',\n 'pageColumns': [{'columnPanels': [{'panelObjectPath': './front-page',\n 'panelObjectViewlet': 'macro_viewlet',\n 'panelSkin': 'defaultPortletWrapper',\n 'viewletOptions': {'itemCount': 10,\n 'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n 'showRSS': True,\n 'smartFolderUID': ['6a78dcacef81d5a943bd11ef2a37f0f4'],\n 'viewlet_title': 'Latest News'}},\n {'panelObjectPath': './front-page',\n 'panelObjectViewlet': 'macro_viewlet',\n 'panelSkin': 'defaultPortletWrapper',\n 'viewletOptions': {'itemCount': 5,\n 'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n 'showRSS': True,\n 'smartFolderUID': ['0909fea48078e843f21756b3e3e9cd69'],\n 'viewlet_title': 'Upcomming Events'}}],\n 'columnWidth': '50%'},\n {'columnPanels': [{'panelObjectPath': './front-page',\n 'panelObjectViewlet': 'macro_viewlet',\n 'panelSkin': 'defaultPortletWrapper',\n 'viewletOptions': {'itemCount': 10,\n 'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n 'showRSS': True,\n 'smartFolderUID': ['ad9fbbed529ae1aae9a66d23f7f03dc2'],\n 'viewlet_title': 'Latest Posts'}}],\n 'columnWidth': '50%'}],\n 'pageStylesheetDynamic': [],\n 'pageStylesheetFixed': [],\n 'pageTitle': 'Untitled page',\n 'pageWidth': '100%'}]"
+005	>>> 	
+c = context.getPanelsConfig() 
+c = context.getPanelsConfig()
+006	>>> 	
+c[0] 
+c[0]
+007	
+'[' 
+'['
+008	>>> 	
+c[1] 
+c[1]
+009	
+'{' 
+'{'
+010	>>> 	
+c[2] 
+c[2]
+011	
+"'" 
+"'"
+012	>>> 	
+print c 
+print c
+013	>>> 	
+c 
+c
+014	
+"[{'pageAlign': 'center',\n  'pageCellPad': '4',\n  'pageCellSpace': '4',\n  'pageColumns': [{'columnPanels': [{'panelObjectPath': './frontpage',\n                                     'panelObjectViewlet': 'viewlet_text',\n                                     'panelSkin': 'alertPortletWrapper',\n                                     'viewletOptions': {'message': '<br><h3 align=center> This is test site for the upcomming vnsecurity.net - please send your feed back to rd@vnsecurity.net</h3><br>',\n                                                        'title': 'Notice'}}],\n                   'columnWidth': '100%'}],\n  'pageStylesheetDynamic': [],\n  'pageStylesheetFixed': [],\n  'pageTitle': 'Untitled page',\n  'pageWidth': '100%'},\n {'pageAlign': 'center',\n  'pageCellPad': '4',\n  'pageCellSpace': '4',\n  'pageColumns': [{'columnPanels': [{'panelObjectPath': './front-page',\n                                     'panelObjectViewlet': 'macro_viewlet',\n                                     'panelSkin': 'defaultPortletWrapper',\n                                     'viewletOptions': {'itemCount': 10,\n                                                        'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n                                                        'showRSS': True,\n                                                        'smartFolderUID': ['6a78dcacef81d5a943bd11ef2a37f0f4'],\n                                                        'viewlet_title': 'Latest News'}},\n                                    {'panelObjectPath': './front-page',\n                                     'panelObjectViewlet': 'macro_viewlet',\n                                     'panelSkin': 'defaultPortletWrapper',\n                                     'viewletOptions': {'itemCount': 5,\n                                                        'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n                                                        'showRSS': True,\n                                                        'smartFolderUID': ['0909fea48078e843f21756b3e3e9cd69'],\n                                                        'viewlet_title': 'Upcomming Events'}}],\n                   'columnWidth': '50%'},\n                  {'columnPanels': [{'panelObjectPath': './front-page',\n                                     'panelObjectViewlet': 'macro_viewlet',\n                                     'panelSkin': 'defaultPortletWrapper',\n                                     'viewletOptions': {'itemCount': 10,\n                                                        'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n                                                        'showRSS': True,\n                                                        'smartFolderUID': ['ad9fbbed529ae1aae9a66d23f7f03dc2'],\n                                                        'viewlet_title': 'Latest Posts'}}],\n                   'columnWidth': '50%'}],\n  'pageStylesheetDynamic': [],\n  'pageStylesheetFixed': [],\n  'pageTitle': 'Untitled page',\n  'pageWidth': '100%'}]" 
+"[{'pageAlign': 'center',\n 'pageCellPad': '4',\n 'pageCellSpace': '4',\n 'pageColumns': [{'columnPanels': [{'panelObjectPath': './frontpage',\n 'panelObjectViewlet': 'viewlet_text',\n 'panelSkin': 'alertPortletWrapper',\n 'viewletOptions': {'message': '
+This is test site for the upcomming vnsecurity.net - please send your feed back to rd@vnsecurity.net
+
+',\n 'title': 'Notice'}}],\n 'columnWidth': '100%'}],\n 'pageStylesheetDynamic': [],\n 'pageStylesheetFixed': [],\n 'pageTitle': 'Untitled page',\n 'pageWidth': '100%'},\n {'pageAlign': 'center',\n 'pageCellPad': '4',\n 'pageCellSpace': '4',\n 'pageColumns': [{'columnPanels': [{'panelObjectPath': './front-page',\n 'panelObjectViewlet': 'macro_viewlet',\n 'panelSkin': 'defaultPortletWrapper',\n 'viewletOptions': {'itemCount': 10,\n 'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n 'showRSS': True,\n 'smartFolderUID': ['6a78dcacef81d5a943bd11ef2a37f0f4'],\n 'viewlet_title': 'Latest News'}},\n {'panelObjectPath': './front-page',\n 'panelObjectViewlet': 'macro_viewlet',\n 'panelSkin': 'defaultPortletWrapper',\n 'viewletOptions': {'itemCount': 5,\n 'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n 'showRSS': True,\n 'smartFolderUID': ['0909fea48078e843f21756b3e3e9cd69'],\n 'viewlet_title': 'Upcomming Events'}}],\n 'columnWidth': '50%'},\n {'columnPanels': [{'panelObjectPath': './front-page',\n 'panelObjectViewlet': 'macro_viewlet',\n 'panelSkin': 'defaultPortletWrapper',\n 'viewletOptions': {'itemCount': 10,\n 'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n 'showRSS': True,\n 'smartFolderUID': ['ad9fbbed529ae1aae9a66d23f7f03dc2'],\n 'viewlet_title': 'Latest Posts'}}],\n 'columnWidth': '50%'}],\n 'pageStylesheetDynamic': [],\n 'pageStylesheetFixed': [],\n 'pageTitle': 'Untitled page',\n 'pageWidth': '100%'}]"
+015	>>> 	
+type(c) 
+type(c)
+016	
+<type 'str'> 
+017	>>> 	
+print %s % c 
+print %s % c
+017	
+  File "<input>", line 1 
+    print %s % c 
+          ^ 
+SyntaxError: invalid syntax 
+File "", line 1 print %s % c ^ SyntaxError: invalid syntax
+018	>>> 	
+print "%s" % (c) 
+print "%s" % (c)
+019	>>> 	
+print "%s" % c 
+print "%s" % c
+020	>>> 	
+printf "%s" % c 
+printf "%s" % c
+020	
+  File "<input>", line 1 
+    printf "%s" % c 
+              ^ 
+SyntaxError: invalid syntax 
+File "", line 1 printf "%s" % c ^ SyntaxError: invalid syntax
+021	>>> 	
+c 
+c
+022	
+"[{'pageAlign': 'center',\n  'pageCellPad': '4',\n  'pageCellSpace': '4',\n  'pageColumns': [{'columnPanels': [{'panelObjectPath': './frontpage',\n                                     'panelObjectViewlet': 'viewlet_text',\n                                     'panelSkin': 'alertPortletWrapper',\n                                     'viewletOptions': {'message': '<br><h3 align=center> This is test site for the upcomming vnsecurity.net - please send your feed back to rd@vnsecurity.net</h3><br>',\n                                                        'title': 'Notice'}}],\n                   'columnWidth': '100%'}],\n  'pageStylesheetDynamic': [],\n  'pageStylesheetFixed': [],\n  'pageTitle': 'Untitled page',\n  'pageWidth': '100%'},\n {'pageAlign': 'center',\n  'pageCellPad': '4',\n  'pageCellSpace': '4',\n  'pageColumns': [{'columnPanels': [{'panelObjectPath': './front-page',\n                                     'panelObjectViewlet': 'macro_viewlet',\n                                     'panelSkin': 'defaultPortletWrapper',\n                                     'viewletOptions': {'itemCount': 10,\n                                                        'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n                                                        'showRSS': True,\n                                                        'smartFolderUID': ['6a78dcacef81d5a943bd11ef2a37f0f4'],\n                                                        'viewlet_title': 'Latest News'}},\n                                    {'panelObjectPath': './front-page',\n                                     'panelObjectViewlet': 'macro_viewlet',\n                                     'panelSkin': 'defaultPortletWrapper',\n                                     'viewletOptions': {'itemCount': 5,\n                                                        'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n                                                        'showRSS': True,\n                                                        'smartFolderUID': ['0909fea48078e843f21756b3e3e9cd69'],\n                                                        'viewlet_title': 'Upcomming Events'}}],\n                   'columnWidth': '50%'},\n                  {'columnPanels': [{'panelObjectPath': './front-page',\n                                     'panelObjectViewlet': 'macro_viewlet',\n                                     'panelSkin': 'defaultPortletWrapper',\n                                     'viewletOptions': {'itemCount': 10,\n                                                        'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n                                                        'showRSS': True,\n                                                        'smartFolderUID': ['ad9fbbed529ae1aae9a66d23f7f03dc2'],\n                                                        'viewlet_title': 'Latest Posts'}}],\n                   'columnWidth': '50%'}],\n  'pageStylesheetDynamic': [],\n  'pageStylesheetFixed': [],\n  'pageTitle': 'Untitled page',\n  'pageWidth': '100%'}]" 
+"[{'pageAlign': 'center',\n 'pageCellPad': '4',\n 'pageCellSpace': '4',\n 'pageColumns': [{'columnPanels': [{'panelObjectPath': './frontpage',\n 'panelObjectViewlet': 'viewlet_text',\n 'panelSkin': 'alertPortletWrapper',\n 'viewletOptions': {'message': '
+This is test site for the upcomming vnsecurity.net - please send your feed back to rd@vnsecurity.net
+
+',\n 'title': 'Notice'}}],\n 'columnWidth': '100%'}],\n 'pageStylesheetDynamic': [],\n 'pageStylesheetFixed': [],\n 'pageTitle': 'Untitled page',\n 'pageWidth': '100%'},\n {'pageAlign': 'center',\n 'pageCellPad': '4',\n 'pageCellSpace': '4',\n 'pageColumns': [{'columnPanels': [{'panelObjectPath': './front-page',\n 'panelObjectViewlet': 'macro_viewlet',\n 'panelSkin': 'defaultPortletWrapper',\n 'viewletOptions': {'itemCount': 10,\n 'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n 'showRSS': True,\n 'smartFolderUID': ['6a78dcacef81d5a943bd11ef2a37f0f4'],\n 'viewlet_title': 'Latest News'}},\n {'panelObjectPath': './front-page',\n 'panelObjectViewlet': 'macro_viewlet',\n 'panelSkin': 'defaultPortletWrapper',\n 'viewletOptions': {'itemCount': 5,\n 'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n 'showRSS': True,\n 'smartFolderUID': ['0909fea48078e843f21756b3e3e9cd69'],\n 'viewlet_title': 'Upcomming Events'}}],\n 'columnWidth': '50%'},\n {'columnPanels': [{'panelObjectPath': './front-page',\n 'panelObjectViewlet': 'macro_viewlet',\n 'panelSkin': 'defaultPortletWrapper',\n 'viewletOptions': {'itemCount': 10,\n 'macro_path': 'here/viewlet_smartfolder/macros/base_portlet',\n 'showRSS': True,\n 'smartFolderUID': ['ad9fbbed529ae1aae9a66d23f7f03dc2'],\n 'viewlet_title': 'Latest Posts'}}],\n 'columnWidth': '50%'}],\n 'pageStylesheetDynamic': [],\n 'pageStylesheetFixed': [],\n 'pageTitle': 'Untitled page',\n 'pageWidth': '100%'}]"
+023	>>> 	
+context.getPortletPos() 
+context.getPortletPos()
+024	
+Traceback (most recent call last): 
+  File "<input>", line 1, in ? 
+AttributeError: getPortletPos 
+Traceback (most recent call last): File "", line 1, in ? AttributeError: getPortletPos
+025	>>> 	
+context.getPortletsPos() 
+context.getPortletsPos()
+026	
+'none' 
+'none'
+027	>>> 	
+panel = context.getPageInfo(1, 'pageColumns')[0]['columnPanels'][1] 
+panel = context.getPageInfo(1, 'pageColumns')[0]['columnPanels'][1]
+028	>>> 	
+panel 
+panel
+029	
+{'panelObjectPath': './front-page', 
+ 'panelObjectViewlet': 'macro_viewlet', 
+ 'panelSkin': 'defaultPortletWrapper', 
+ 'viewletOptions': {'itemCount': 5, 
+                    'macro_path': 'here/viewlet_smartfolder/macros/base_portlet', 
+                    'showRSS': True, 
+                    'smartFolderUID': ['0909fea48078e843f21756b3e3e9cd69'], 
+                    'viewlet_title': 'Upcomming Events'}} 
+{'panelObjectPath': './front-page', 'panelObjectViewlet': 'macro_viewlet', 'panelSkin': 'defaultPortletWrapper', 'viewletOptions': {'itemCount': 5, 'macro_path': 'here/viewlet_smartfolder/macros/base_portlet', 'showRSS': True, 'smartFolderUID': ['0909fea48078e843f21756b3e3e9cd69'], 'viewlet_title': 'Upcomming Events'}}
+030	>>> 	
+panel.viewletOptions 
+panel.viewletOptions
+031	
+Traceback (most recent call last): 
+  File "<input>", line 1, in ? 
+AttributeError: 'dict' object has no attribute 'viewletOptions' 
+Traceback (most recent call last): File "", line 1, in ? AttributeError: 'dict' object has no attribute 'viewletOptions'
+032	>>> 	
+panel.viewletOptions['smartFolderUID'] 
+panel.viewletOptions['smartFolderUID']
+033	
+Traceback (most recent call last): 
+  File "<input>", line 1, in ? 
+AttributeError: 'dict' object has no attribute 'viewletOptions' 
+Traceback (most recent call last): File "", line 1, in ? AttributeError: 'dict' object has no attribute 'viewletOptions'
+034	>>> 	
+panel['viewletOptions']['smartFolderUID'] 
+panel['viewletOptions']['smartFolderUID']
+035	
+['0909fea48078e843f21756b3e3e9cd69'] 
+['0909fea48078e843f21756b3e3e9cd69']
+036	>>> 	
+panel['viewletOptions'] 
+panel['viewletOptions']
+037	
+{'itemCount': 5, 
+ 'macro_path': 'here/viewlet_smartfolder/macros/base_portlet', 
+ 'showRSS': True, 
+ 'smartFolderUID': ['0909fea48078e843f21756b3e3e9cd69'], 
+ 'viewlet_title': 'Upcomming Events'} 
+{'itemCount': 5, 'macro_path': 'here/viewlet_smartfolder/macros/base_portlet', 'showRSS': True, 'smartFolderUID': ['0909fea48078e843f21756b3e3e9cd69'], 'viewlet_title': 'Upcomming Events'}
+   	>>> 	
+		
+
+type(object) -> the object's type
+type(name, bases, dict) -> a new type
+
+Status: Done, waiting for input
+
+Python namespace
+context: the object - http://localhost:8081/testbed3/front-page
+app: the root Zope object
+portal: the Plone portal object
+utils: a set of useful utilities
+user: the current user object, if your current user can be located
+Other notes
+print: goes to stdout (eg: your console), like the command line version, print is not needed.
+	
+
+Session information
+Session id: 0
+Link to this session
+Link to xml for this session

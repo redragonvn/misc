@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      i18n:domain="plone">
+
+<body>
+
+<!-- THE SEARCHBOX DEFINITION -->
+<div class="portlet" id="portlet-date" metal:define-macro="portlet">
+  <h5 i18n:translate="text_search"><span tal:define="now modules/DateTime/DateTime" tal:content="now/Date" />
+    </h5>
+ <!--div class="portletBody">
+  <div class="portletContent">
+
+  </div>
+ </div-->
+</div>
+
+</body>
+</html>
