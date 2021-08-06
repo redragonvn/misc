@@ -1,0 +1,38 @@
+AC_INIT(vulture.c)
+AM_INIT_AUTOMAKE(vulture,0.9)
+AM_CONFIG_HEADER(config.h)
+
+dnl Checks for programs.
+AC_PROG_CC
+
+dnl Checks for OS.
+AC_CANONICAL_HOST
+
+case "$host" in
+	*-linux*)
+    		linux=yes
+    		AC_DEFINE(LINUX,,"LINUX")
+    		;;
+  	*-openbsd*)
+    		AC_DEFINE(OPENBSD,,"OPENBSD")
+    		;;
+  	*-solaris*)
+    		AC_DEFINE(SOLARIS,,"SOLARIS")
+    		;;
+  	*-freebsd*)
+    		AC_DEFINE(FREEBSD,,"FREEBSD")
+    		;;
+  	*-bsdi*)
+    		AC_DEFINE(BSDI,,"BSDI")
+    		;;
+  	*-apple*)
+    		AC_DEFINE(MACOS,,"MACOS")
+esac
+
+if test -n "$LINUX"; then
+	AC_MSG_ERROR([*** vulture runs on a Linux box only ***])
+	exit
+fi
+
+AC_PROG_INSTALL
+AC_OUTPUT(Makefile)

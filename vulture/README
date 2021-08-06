@@ -1,0 +1,19 @@
+				thc-vulture 0.9
+			Linux Kernel Covert Channel
+
+|=------------------------=[ (C) by rd <rd@thc.org> ]=-----------------------=|
+|=--------------------------=[ The Hacker's Choice ]=-------------------------|
+				 --www.thc.org--
+
+
+FEATURE
+
+
+DOCUMENTATION
+	See doc/xxx.txt
+
+CONFIGURING and COMPILING
+
+  $ ./configure
+  $ make
+
